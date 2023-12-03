@@ -29,12 +29,12 @@ pub fn part_one(input: &str) -> Option<u32> {
         r"\d* (blue|red|green)"
     ).unwrap();
 
-    let res: u32 = input.trim().split("\n").map(|s| {
+    let res: u32 = input.trim().split('\n').map(|s| {
 
-        let sets = s.split(";").map(|set| {
+        let sets = s.split(';').map(|set| {
             let sets_re = re2.find_iter(set).map(|m| {
                 let m_str = m.as_str();
-                m_str.split_at(m_str.find(" ").unwrap())
+                m_str.split_at(m_str.find(' ').unwrap())
             }).collect::<Vec<(&str, &str)>>();
 
             let mut out = Set::default();
@@ -52,7 +52,7 @@ pub fn part_one(input: &str) -> Option<u32> {
 
         Game {
             id: re.find(s).unwrap().as_str().parse::<u32>().unwrap(),
-            sets: sets,
+            sets,
         }
 
     })
@@ -80,12 +80,12 @@ pub fn part_two(input: &str) -> Option<u32> {
         r"\d* (blue|red|green)"
     ).unwrap();
 
-    let res: u32 = input.trim().split("\n").map(|s| {
+    let res: u32 = input.trim().split('\n').map(|s| {
 
-        let sets = s.split(";").map(|set| {
+        let sets = s.split(';').map(|set| {
             let sets_re = re2.find_iter(set).map(|m| {
                 let m_str = m.as_str();
-                m_str.split_at(m_str.find(" ").unwrap())
+                m_str.split_at(m_str.find(' ').unwrap())
             }).collect::<Vec<(&str, &str)>>();
 
             let mut out = Set::default();
@@ -103,7 +103,7 @@ pub fn part_two(input: &str) -> Option<u32> {
 
         Game {
             id: re.find(s).unwrap().as_str().parse::<u32>().unwrap(),
-            sets: sets,
+            sets,
         }
 
     })
