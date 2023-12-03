@@ -10,7 +10,7 @@ pub fn part_one(input: &str) -> Option<u32> {
     ).unwrap();
     
     let res: Vec<Vec<char>> = input.trim()
-    .split_inclusive("\n")
+    .split_inclusive('\n')
     .map(|s| {
         s.chars().collect()
     }).collect::<Vec<Vec<char>>>();
@@ -24,7 +24,7 @@ pub fn part_one(input: &str) -> Option<u32> {
         (x, y)
     };
 
-    let nums = re.find_iter(&input).map(|m| {
+    let nums = re.find_iter(input).map(|m| {
         let s = m.as_str();
         let start = m.start();
         let end = m.end();
@@ -32,7 +32,7 @@ pub fn part_one(input: &str) -> Option<u32> {
     }).collect::<Vec<(&str, usize, usize)>>();
 
     let res: u32 = nums.iter()
-    .filter(|(s, start, end)| {
+    .filter(|(_s, start, end)| {
         let start_xy = i_to_xy(*start, width);
         let end_xy = i_to_xy(*end, width);
 
@@ -88,7 +88,7 @@ pub fn part_two(input: &str) -> Option<u32> {
     ).unwrap();
     
     let res: Vec<Vec<char>> = input.trim()
-    .split_inclusive("\n")
+    .split_inclusive('\n')
     .map(|s| {
         s.chars().collect()
     }).collect::<Vec<Vec<char>>>();
@@ -102,7 +102,7 @@ pub fn part_two(input: &str) -> Option<u32> {
         (x, y)
     };
 
-    let nums = re.find_iter(&input).map(|m| {
+    let nums = re.find_iter(input).map(|m| {
         let s = m.as_str();
         let start = m.start();
         let end = m.end();
@@ -143,9 +143,7 @@ pub fn part_two(input: &str) -> Option<u32> {
 
             if elem == '*' {
 
-                if !hashmap.contains_key(&(x,y)) {
-                    hashmap.insert((x,y), Vec::new());
-                }
+                hashmap.entry((x,y)).or_insert_with(|| Vec::new());
 
                 hashmap.get_mut(&(x,y)).unwrap().push(s.parse::<u32>().unwrap());
             } 
