@@ -143,7 +143,7 @@ pub fn part_two(input: &str) -> Option<u32> {
 
             if elem == '*' {
 
-                hashmap.entry((x,y)).or_insert_with(|| Vec::new());
+                hashmap.entry((x,y)).or_default();
 
                 hashmap.get_mut(&(x,y)).unwrap().push(s.parse::<u32>().unwrap());
             } 

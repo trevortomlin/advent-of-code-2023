@@ -3,7 +3,7 @@ use regex::Regex;
 
 pub fn part_one(input: &str) -> Option<u32> {
     
-    let x: u32 = input.trim().split("\n").map(|s| {
+    let x: u32 = input.trim().split('\n').map(|s| {
         s.chars().filter(|&c| {
             match c {
                 '0'..='9' => true,
@@ -43,7 +43,7 @@ pub fn part_two(input: &str) -> Option<u32> {
         r"1|2|3|4|5|6|7|8|9|one|two|three|four|five|six|seven|eight|nine"
     ).unwrap();
 
-    let x: u32 = input.trim().split("\n").map(|s| {
+    let x: u32 = input.trim().split('\n').map(|s| {
         let first = re.find(s).unwrap();
 
         let mut last = first.as_str();
