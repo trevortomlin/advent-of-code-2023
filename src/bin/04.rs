@@ -91,7 +91,7 @@ pub fn part_two(input: &str) -> Option<u32> {
                 cards.push(1);
                 1
             }
-        };
+        };  
         let matches_count = hash_set_winning.intersection(&hash_set_have).count() as u32;
 
         for x in 1..=matches_count as usize{
